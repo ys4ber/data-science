@@ -1,3 +1,4 @@
 .env
 subject.zip
 /subject
+venv/
