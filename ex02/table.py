@@ -32,14 +32,14 @@ def Create_Table(conn, titles):
     with conn.cursor() as cur:
         create_table_query = """
             CREATE TABLE data_2022_dec (
-                event_time TIMESTAMPTZ NOT NULL,
-                event_type VARCHAR(50),
-                product_id INT,
-                price NUMERIC(10,2),
-                user_id BIGINT,
-                user_session UUID
+                {0} TIMESTAMPTZ NOT NULL,
+                {1} VARCHAR(50),
+                {2} INT,
+                {3} NUMERIC(10,2),
+                {4} BIGINT,
+                {5} UUID
             );
-        """
+        """.format(*titles)
         cur.execute(create_table_query)
         print("Table 'data_2022_dec' created successfully.")
         conn.commit()
@@ -61,6 +61,7 @@ def main():
         Create_Table(conn, titles)
     except Exception as e:
         print(f"Error creating table: {e}")
+
 
 if __name__ == "__main__":
     main()
