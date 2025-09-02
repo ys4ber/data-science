@@ -47,17 +47,18 @@ def Create_Table(conn, titles):
         conn.close()
 
 def main():
-    file = "data_2022_oct.csv"
-    titles = get_titles_from_csv(os.path.join(CUSTOMER_PATH, file))
-
-    conn = psycopg2.connect(
-        dbname=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD,
-        host=HOST,
-        port=PORT
-    )
     try:
+        file = "data_2022_oct.csv"
+        titles = get_titles_from_csv(os.path.join(CUSTOMER_PATH, file))
+
+        conn = psycopg2.connect(
+            dbname=DB_NAME,
+            user=DB_USER,
+            password=DB_PASSWORD,
+            host=HOST,
+            port=PORT
+        )
+
         Create_Table(conn, titles)
     except Exception as e:
         print(f"Error creating table: {e}")
