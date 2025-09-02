@@ -14,7 +14,7 @@ PORT = os.getenv("POSTGRES_PORT")
 
 
 
-CUSTOMER_PATH = "../subject/customer/"
+CUSTOMER_PATH = "/goinfre/ysaber/subject/customer"
 
 
 def get_titles_from_csv(file_path):

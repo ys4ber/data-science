@@ -13,7 +13,7 @@ HOST = os.getenv("POSTGRES_HOST")
 PORT = os.getenv("POSTGRES_PORT")
 
 
-ITEM_PATH = "../subject/item"
+ITEM_PATH = "/goinfre/ysaber/subject/item"
 
 def get_titles_from_csv(file_path):
 
@@ -43,7 +43,7 @@ def Create_Table(conn, titles, cur):
     conn.commit()
 
 def main():
-    # try:
+    try:
         files = subprocess.check_output(['ls', ITEM_PATH]).decode('utf-8').replace(".csv", "").splitlines()
         titles = get_titles_from_csv(os.path.join(ITEM_PATH, files[0] + ".csv"))
 
@@ -68,8 +68,8 @@ def main():
             cur.close()
             conn.close()
 
-    # except Exception as e:
-    #     print(f"Error getting titles from CSV: {e}")
+    except Exception as e:
+        print(f"Error getting titles from CSV: {e}")
 
 if __name__ == "__main__":
     main()
